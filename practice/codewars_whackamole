@@ -1,0 +1,43 @@
+const whackAMole = (array) => {
+  let molesWhackedTotal = 0;
+  let molesWhackedThisRound = 0;
+  let secsPassed = 0;
+  let loopedOver = 0;
+
+  const oneSec = () => {
+    molesWhackedThisRound = 0;
+    loopedOver = 0;
+    secsPassed += 1;
+    for (let i = 0; i < array.length; i++) {
+      for (let j = 0; j < array[i].length; j++) {
+        loopedOver += 1;
+        if (secsPassed === 7) {
+          break;
+        } else if (array[i][j] === secsPassed && molesWhackedThisRound < 2) {
+          molesWhackedThisRound += 1;
+          molesWhackedTotal += 1;
+        } else if (molesWhackedThisRound === 2 || loopedOver === 12) {
+          oneSec();
+        }
+      }
+    }
+  };
+  oneSec();
+  return molesWhackedTotal;
+};
+
+console.log(
+  whackAMole([
+    [6, 4, 1, 1],
+    [4, 4, 4, 4],
+    [1, 2, 3, 3],
+  ])
+);
+
+console.log(
+  whackAMole([
+    [1, 1, 2, 3],
+    [3, 4, 6, 2],
+    [3, 5, 5, 6],
+  ])
+);
