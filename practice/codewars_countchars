@@ -1,0 +1,15 @@
+const countChars = (str) => {
+  let strArray = str.split("");
+
+  const charObjs = [];
+  strArray.forEach((char) => {
+    if (charObjs[`${char}`] === undefined) {
+      charObjs[`${char}`] = 1;
+    } else charObjs[`${char}`] += 1;
+  });
+
+  return charObjs;
+};
+
+console.log(countChars("roseanna"));
+console.log(countChars("hhheeeeelelllllllooooo"));
